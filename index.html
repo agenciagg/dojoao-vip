@@ -106,13 +106,13 @@ h1 em{font-style:normal;color:#C9A082;display:block}
 .poster .stars5{letter-spacing:.4em;color:#6B4539;font-size:13px;margin-top:10px}
 
 /* rolo de feno */
-.tumble{position:absolute;bottom:clamp(8px,2vw,24px);left:0;width:100px;height:100px;z-index:-1;pointer-events:none;animation:cross 17s linear infinite}
+.tumble{position:absolute;bottom:clamp(6px,1.6vw,20px);left:0;width:clamp(34px,5.2vw,70px);height:clamp(34px,5.2vw,70px);z-index:-1;pointer-events:none;animation:cross 17s linear infinite}
 .tumble svg{width:100%;height:100%;display:block;animation:roll 17s linear infinite,hop .9s ease-in-out infinite;transform-origin:50% 50%}
-.tumble.t2{width:74px;height:74px;bottom:clamp(2px,1vw,12px);animation-duration:24s;animation-delay:-10s}
+.tumble.t2{width:clamp(26px,3.6vw,48px);height:clamp(26px,3.6vw,48px);bottom:clamp(2px,.8vw,10px);animation-duration:24s;animation-delay:-10s}
 .tumble.t2 svg{animation-duration:24s,1.15s}
 .tumble::after{content:"";position:absolute;left:8%;right:8%;bottom:-3px;height:7px;border-radius:50%;background:#0009;filter:blur(3px);z-index:-1;animation:sh .9s ease-in-out infinite}
 @keyframes sh{50%{transform:scale(.7);opacity:.5}}
-@keyframes cross{from{transform:translateX(-100px)}to{transform:translateX(calc(100vw + 40px))}}
+@keyframes cross{from{transform:translateX(-80px)}to{transform:translateX(calc(100vw + 40px))}}
 @keyframes roll{to{rotate:1500deg}}
 @keyframes hop{50%{translate:0 -9px}}
 .cacti{position:absolute;left:-40px;bottom:0;width:calc(100% + 80px);height:clamp(250px,26vw,560px);z-index:-1;display:block}
@@ -153,10 +153,16 @@ h1 em{font-style:normal;color:#C9A082;display:block}
 @keyframes shinebg{0%,60%{background-position:160% 0}100%{background-position:-60% 0}}
 
 
-.sunset{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(70,30,70,0) 25%,rgba(160,60,80,.45) 62%,rgba(244,140,64,.75) 100%);opacity:calc(var(--n,0) * 1)}
-.sundisc{position:absolute;left:50%;bottom:calc(105px - var(--n,0) * 175px);width:clamp(110px,16vw,190px);aspect-ratio:1;translate:-50% 0;border-radius:50%;z-index:-1;pointer-events:none;
-  background:radial-gradient(circle,#FFE6BA 0%,#F6B26A 42%,#E0733C 72%);box-shadow:0 0 70px 26px #E8803F66,0 0 160px 60px #E8803F33;filter:saturate(calc(1 + var(--n,0) * .35))}
-.stars{opacity:calc(.55 + var(--n,0) * .35)}
+.sunset{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(70,30,70,0) 25%,rgba(160,60,80,.45) 62%,rgba(244,140,64,.75) 100%);opacity:calc(var(--w,0) * (1 - var(--q,0) * .9))}
+.night{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#05040f 0%,#0f0a1f 45%,#2a1530 85%,#3a1b2c 100%);opacity:calc(var(--q,0) * .92)}
+.sundisc{position:absolute;left:50%;top:0;width:clamp(130px,36vw,220px);aspect-ratio:1;translate:-50% 0;transform:translate3d(0,calc(var(--sy,80) * 1px - 50%),0) scale(calc(.8 + var(--m,0) * .32));border-radius:50%;z-index:-1;pointer-events:none;will-change:transform;
+  background:radial-gradient(circle,#FFE6BA 0%,#F6B26A 42%,#E0733C 72%);box-shadow:0 0 70px 26px rgba(232,128,63,calc(.4 * var(--m,0))),0 0 160px 60px rgba(232,128,63,calc(.2 * var(--m,0)))}
+.sundisc::before{content:"";position:absolute;inset:0;border-radius:50%;opacity:calc(1 - var(--m,0));
+  background:radial-gradient(circle at 62% 28%,rgba(150,146,136,.38) 0 6%,transparent 7%),radial-gradient(circle at 30% 60%,rgba(150,146,136,.34) 0 9%,transparent 10%),radial-gradient(circle at 66% 68%,rgba(150,146,136,.3) 0 5%,transparent 6%),radial-gradient(circle at 44% 40%,rgba(150,146,136,.26) 0 4%,transparent 5%),radial-gradient(circle at 38% 34%,#FBF8EE 0%,#E8E3D5 55%,#BDB8AC 100%);
+  box-shadow:0 0 50px 14px rgba(190,205,235,.3),0 0 120px 40px rgba(150,170,220,.15)}
+@media(min-width:900px){.sundisc{width:clamp(170px,15vw,240px);left:76%}}
+.hero h1,.hero .lead,.hero p{text-shadow:0 1px 14px rgba(28,10,10,.5)}
+.stars{opacity:calc(.55 + var(--w,0) * .1 + var(--q,0) * .35)}
 
 /* laco */
 .lasso-wrap{position:relative;display:inline-flex}
@@ -229,13 +235,11 @@ footer .word{width:110px;--logo:var(--accent)}
 .rv.in{transform:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{transform:none}}
 .rear{transform-origin:1030px 181px;animation:rear 3.2s ease-in-out infinite}@keyframes rear{0%,100%{transform:rotate(-3deg)}45%{transform:rotate(5deg)}60%{transform:rotate(4deg)}}@media(prefers-reduced-motion:reduce){.rear{animation:none}}</style>
-</head>
-<body>
 
 <header class="hero" id="hero">
   <canvas id="dust" aria-hidden="true"></canvas>
-  <div class="sunglow"></div><div class="sunset"></div><div class="sundisc"></div>
-  <div class="stars" aria-hidden="true" id="stars"></div><span class="shoot"></span>
+  <div class="sunglow"></div><div class="sunset"></div><div class="night"></div>
+  <div class="stars" aria-hidden="true" id="stars"></div><span class="shoot"></span><div class="sundisc"></div>
     <svg class="cacti" viewBox="0 -35 1200 305" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs>
 <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33211D"/><stop offset=".6" stop-color="#1E1413"/><stop offset="1" stop-color="#4A2B20"/></linearGradient>
 <linearGradient id="woodl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3F2A22"/><stop offset="1" stop-color="#2A1A16"/></linearGradient>
@@ -364,7 +368,6 @@ footer .word{width:110px;--logo:var(--accent)}
 // Troque pelo link de convite do grupo (chat.whatsapp.com/...) e publique de novo.
 var GROUP_URL = "https://chat.whatsapp.com/EBnCAnlJjLWGHHBzqNqF1V";
 document.querySelectorAll('.js-join').forEach(function(a){a.setAttribute('href',GROUP_URL)});
-document.querySelectorAll('.js-join').forEach(function(a){a.addEventListener('click',function(){try{fbq('track','Lead');fbq('trackCustom','EntrarGrupoVIP')}catch(e){}})});
 var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if ('IntersectionObserver' in window && !reduce) {
   var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
@@ -386,9 +389,13 @@ if ('IntersectionObserver' in window && !reduce) {
   loop();
 })();
 
-(function(){var h=document.getElementById('hero');if(!h||reduce)return;var tk=false;
-function u(){tk=false;var max=Math.max(1,h.offsetHeight-window.innerHeight);var n=Math.min(1,Math.max(0,window.scrollY/max));h.style.setProperty('--n',n.toFixed(3))}
-window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(u)}},{passive:true});window.addEventListener('resize',u);u()})();
+(function(){var h=document.getElementById('hero');if(!h)return;var sd=h.querySelector('.sundisc'),ct=h.querySelector('.cacti'),tk=false;
+function cl(x){return Math.min(1,Math.max(0,x))}function ss(a,b,x){x=cl((x-a)/(b-a));return x*x*(3-2*x)}
+function u(){tk=false;var H=h.offsetHeight,vh=window.innerHeight,y=Math.max(0,-h.getBoundingClientRect().top),dk=window.innerWidth>=900,
+D=sd.offsetWidth,p=cl(y/Math.max(1,H-vh)),q=cl((y-(H-vh))/(vh*.5)),Y0=(dk?.26:.1)*vh+D*.1,Yh=H-ct.getBoundingClientRect().height*.72,
+Y=Y0+(Yh-Y0)*p+q*D*1.35;
+h.style.setProperty('--sy',Y.toFixed(1));h.style.setProperty('--m',ss(.12,.7,p).toFixed(3));h.style.setProperty('--w',ss(.25,1,p).toFixed(3));h.style.setProperty('--q',(ss(0,1,q)).toFixed(3))}
+if(!reduce){window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(u)}},{passive:true});window.addEventListener('resize',u)}u()})();
 (function(){var w=document.querySelector('.lasso-wrap');return;
 var L=w.querySelector('.lasso'),btn=w.querySelector('.btn'),RB=L.querySelector('.rb'),RS=L.querySelector('.rs'),RH=L.querySelector('.rh'),R2=L.querySelector('.rs2'),HL=L.querySelector('.hl'),HT=L.querySelector('.ht'),hand=document.querySelector('.cacti .hand'),town=document.querySelector('.cacti');
 function vb(){var m=window.innerWidth<700;town.setAttribute('viewBox',m?'230 -35 970 305':'0 -35 1200 305');town.setAttribute('preserveAspectRatio','xMidYMax slice')}
@@ -433,5 +440,7 @@ window.addEventListener('scroll',kick,{passive:true});kick()})();
 function u(){tk=false;var r=b.getBoundingClientRect();sk.classList.toggle('show',r.bottom<0)}
 window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(u)}},{passive:true});window.addEventListener('resize',u);u()})();
 </script>
+
+<script>document.querySelectorAll('.js-join').forEach(function(a){a.addEventListener('click',function(){try{fbq('track','Lead');fbq('trackCustom','EntrarGrupoVIP')}catch(e){}})});</script>
 </body>
 </html>
